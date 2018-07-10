@@ -1,0 +1,25 @@
+{
+  "name": "inversify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack && node ../bin/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "awesome-typescript-loader": "^5.2.0",
+    "inversify": "^4.13.0",
+    "webpack": "^4.15.1",
+    "webpack-cli": "^3.0.8"
+  },
+  "dependencies": {
+    "@types/howler": "^2.0.5",
+    "howler": "^2.0.13",
+    "reflect-metadata": "^0.1.12",
+    "source-map-loader": "^0.2.3",
+    "typescript": "^2.9.2"
+  }
+}
