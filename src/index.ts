@@ -11,6 +11,7 @@ async function main() {
     await di.get<IGame>(TYPES.GAME).init();
     await di.get<ISoundManager>(TYPES.SOUNDS).playSound(SoundType.Welcome);
 
+    console.log("the App finished!");
 }
 
 main();
