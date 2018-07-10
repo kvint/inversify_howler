@@ -13,6 +13,9 @@ export default class Game {
 
     async init() {
         // parse json and init sounds
+        const response = await fetch("./data/sounds.json");
+        const json = await response.json();
+        console.log(json);
         di.bind(SoundType.Welcome).toConstantValue(new SoundItem("soundA.wav"));
 
         await this.sManager.preloadSound(SoundType.Welcome);

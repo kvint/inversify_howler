@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const tsLoader = 'awesome-typescript-loader';
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
     mode: "none",
@@ -18,14 +19,18 @@ module.exports = {
         new WebpackOnBuildFinishPlugin((stats) => {
             const { errors } = stats.compilation;
             console.log(errors);
-        })
+        }),
+        new CopyWebpackPlugin([
+            {from: `template/`}
+        ])
     ],
     module: {
         rules: [
             {
                 enforce: 'pre',
                 test: /\.js$/,
-                use: 'source-map-loader'
+                use: 'source-map-loader',
+                exclude: /node_modules\/reflect-metadata/
             },
             {
                 test: /\.ts$/,
