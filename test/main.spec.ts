@@ -1,8 +1,8 @@
 import 'jasmine'
 import {assert} from 'chai'
 
-describe('the very first test', () => {
-    it('should fail', () => {
-        assert(true, "Should fail");
+describe('Initial test suite', () => {
+    it('failure', () => {
+        assert(true, "Intended failure");
     })
 });

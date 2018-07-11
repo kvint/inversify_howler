@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "doZaebis": "gulp python huemae"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +17,7 @@
     "copy-webpack-plugin": "^4.5.2",
     "inversify": "^4.13.0",
     "karma": "^2.0.4",
+    "karma-mocha-reporter": "^2.2.5",
     "karma-typescript": "^3.0.12",
     "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8"
