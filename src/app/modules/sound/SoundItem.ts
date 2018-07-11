@@ -1,4 +1,4 @@
-export default class SoundItem extends Howl {
+export default class /**/SoundItem extends Howl {
     constructor(public id: string) {
         super({src: `data/sound${id}.wav`});
     }
