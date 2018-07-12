@@ -1,11 +1,17 @@
 import {Action} from "./Action";
 import SoundItem from "../sound/SoundItem";
 
-export class SoundAction extends Action<string> {
+export class SoundAction extends Action {
 
-    async execute(soundName: string): Promise<any> {
-        const item = new SoundItem(soundName);
-        await item.preloadSound();
-        await item.playSound();
+    protected item: SoundItem;
+
+    constructor(soundName: string) {
+        super();
+        this.item = new SoundItem(soundName);
+    }
+
+    async execute(): Promise<any> {
+        await this.item.preloadSound();
+        await this.item.playSound();
     }
 }

@@ -17,7 +17,7 @@ module.exports = function(config) {
         preprocessors: {
             "**/*.ts": "karma-typescript"
         },
-        reporters: ["progress", "mocha", "karma-typescript"],
+        reporters: ["mocha", "karma-typescript"],
         browsers: ["Chrome"],
         karmaTypescriptConfig: {
             bundlerOptions: {

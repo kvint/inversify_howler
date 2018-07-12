@@ -2,7 +2,6 @@ import 'jasmine'
 import 'howler'
 import {expect} from 'chai';
 import SoundItem from "../src/app/modules/sound/SoundItem";
-import {SoundAction} from "../src/app/modules/core/SoundAction";
 
 describe('Sound tests', () => {
     it('expects Howl', () => {
@@ -13,5 +12,4 @@ describe('Sound tests', () => {
         await item.preloadSound();
         // await item.playSound();
     });
-    it('sound action', async () => new SoundAction().run("1"));
 });

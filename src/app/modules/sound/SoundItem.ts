@@ -17,7 +17,6 @@ export default class /**/SoundItem extends Howl {
         this.play();
         await new Promise((resolve) => {
             this.once("end", () => {
-                console.log('Sound ended');
                 resolve();
             })
         });
