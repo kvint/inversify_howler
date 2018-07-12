@@ -1,9 +1,11 @@
 import 'jasmine'
 import 'howler'
+import {expect} from 'chai'
 import {SoundAction} from "../src/app/modules/core/SoundAction";
 import {WaitAction} from "../src/app/modules/core/WaitAction";
 import {SequenceAction} from "../src/app/modules/core/SequenceAction";
 import {Action} from "../src/app/modules/core/Action";
+import {LazyAction} from "../src/app/modules/core/LazyAction";
 
 describe('Actions tests', () => {
 
@@ -23,7 +25,47 @@ describe('Actions tests', () => {
             wait05,
             new SoundAction("4"),
             wait05
-        ]).run()
+        ]).run();
+    });
+
+    describe("Lazy", () => {
+
+        it('Base', async () => {
+
+            let param = 0;
+            await new LazyAction(() => {
+                param = 1;
+            }).run();
+
+            expect(param).to.equal(1);
+        });
+
+        it('Sequence', async () => {
+
+            let param = 0;
+            await new SequenceAction([
+                new LazyAction(() => {
+                    expect(param).to.equal(0);
+                    param++;
+                }),
+                new LazyAction(() => {
+                    expect(param).to.equal(1);
+                    param++;
+                }),
+                new LazyAction(() => {
+                    expect(param).to.equal(2);
+                    param++;
+                }),
+                new LazyAction(() => {
+                    expect(param).to.equal(3);
+                    param++;
+                }),
+
+            ]).run();
+
+            expect(param).to.equal(4);
+        });
+
     });
 
     // it('sequence action', async () => new SequenceAction([
@@ -31,9 +73,6 @@ describe('Actions tests', () => {
     //     new SoundAction("2")
     // ]).run());
 
-    // it('lazy action', async () => new LazyAction(() => {
-    //      return new SoundAction()
-    // }).run());
 
     // it('sequence + parallel action', async () => new SequenceAction([
     //     const prll = new SequenceAction([

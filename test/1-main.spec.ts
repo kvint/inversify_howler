@@ -10,7 +10,7 @@ describe('Initial test suite', () => {
     const di = new Container();
     di.bind(TYPES.DISPATCHER).toConstantValue(new EventDispatcher());
 
-    it('failure', () => {
+    it('test of test', () => {
         assert(true, "true is true");
     });
 
