@@ -6,6 +6,8 @@ import Game from "./app/Game";
 import {SoundManager} from "./app/modules/sound/SoundManager";
 import {EventDispatcher} from "./app/modules/core/EventDispatcher";
 
+export interface ISoundEngine extends Howl {}
+
 const di = new Container();
 
 di.bind(TYPES.SOUNDS).to(SoundManager);

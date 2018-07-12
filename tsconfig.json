@@ -12,7 +12,7 @@
         "noResolve": false,
         "noUnusedParameters": false,
         "noUnusedLocals": true,
-        "strictNullChecks": true,
+        "strictNullChecks": false,
         "importHelpers": true,
         "noImplicitAny": false
     }

@@ -3,6 +3,9 @@ export default class /**/SoundItem extends Howl {
         super({src: `data/sound${id}.wav`});
     }
     preloadSound(): Promise<any> {
+        if (this.state() === "loaded") {
+          return Promise.resolve();
+        }
         this.load();
         return new Promise((resolve) => {
             this.once("load", () => {
@@ -10,10 +13,11 @@ export default class /**/SoundItem extends Howl {
             })
         });
     }
-    playSound(): Promise<any> {
+    async playSound(): Promise<any> {
         this.play();
-        return new Promise((resolve) => {
+        await new Promise((resolve) => {
             this.once("end", () => {
+                console.log('Sound ended');
                 resolve();
             })
         });

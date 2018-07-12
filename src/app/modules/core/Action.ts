@@ -1,12 +1,17 @@
 import {BaseAction} from "./BaseAction";
 
-export class Action<T=never> extends BaseAction {
+export class Action<T= never> extends BaseAction<T> {
 
     async execute(commandData?: T): Promise<any> {
-        return Promise.resolve();
+        this.resolve();
     }
-    async onFailed(commandData?: T): Promise<any> {
-        // TODO: add log
-        return Promise.resolve();
+
+    async terminate(): Promise<any> {
+        this.reject();
+    }
+
+    async failed(reason: any): Promise<any> {
+        debugger;
+        return super.failed(reason);
     }
 }
