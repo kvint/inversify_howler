@@ -13,7 +13,17 @@ describe('Actions tests', () => {
 
     it('Sound', async () => new SoundAction("1").run());
 
-    it('Wait', async () => new WaitAction(2).run());
+    describe("Wait action", ()=>{
+
+        it('delays', async () => {
+            const started = Date.now();
+            await new WaitAction(1).run();
+            const delay = Math.round((Date.now() - started) / 1000);
+
+            expect(delay).to.be.equal(1)
+        });
+
+    });
 
     it('Sequence', async () => {
         let wait05 = new WaitAction(0.5);
@@ -30,40 +40,40 @@ describe('Actions tests', () => {
 
     describe("Lazy", () => {
 
-        it('Base', async () => {
+        it('works', async () => {
 
-            let param = 0;
+            let param = "some value";
             await new LazyAction(() => {
-                param = 1;
+                param = "changed value";
             }).run();
 
-            expect(param).to.equal(1);
+            expect(param).to.be.equal("changed value");
         });
 
         it('Sequence', async () => {
 
-            let param = 0;
+            let counter = 0;
             await new SequenceAction([
                 new LazyAction(() => {
-                    expect(param).to.equal(0);
-                    param++;
+                    expect(counter).to.be.equal(0);
+                    counter++;
                 }),
                 new LazyAction(() => {
-                    expect(param).to.equal(1);
-                    param++;
+                    expect(counter).to.be.equal(1);
+                    counter++;
                 }),
                 new LazyAction(() => {
-                    expect(param).to.equal(2);
-                    param++;
+                    expect(counter).to.be.equal(2);
+                    counter++;
                 }),
                 new LazyAction(() => {
-                    expect(param).to.equal(3);
-                    param++;
+                    expect(counter).to.be.equal(3);
+                    counter++;
                 }),
 
             ]).run();
 
-            expect(param).to.equal(4);
+            expect(counter).to.be.equal(4);
         });
 
     });
