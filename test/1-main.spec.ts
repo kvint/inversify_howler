@@ -4,7 +4,6 @@ import {assert} from 'chai'
 import {Container} from "inversify";
 import TYPES from "../src/TYPES";
 import {EventDispatcher} from "../src/app/modules/core/EventDispatcher";
-import {Action} from "../src/app/modules/core/Action";
 
 describe('Initial test suite', () => {
 
@@ -23,5 +22,4 @@ describe('Initial test suite', () => {
 
     });
 
-    it('base action run', async () => new Action().run());
 });

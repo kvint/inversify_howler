@@ -3,12 +3,15 @@ import 'howler'
 import {SoundAction} from "../src/app/modules/core/SoundAction";
 import {WaitAction} from "../src/app/modules/core/WaitAction";
 import {SequenceAction} from "../src/app/modules/core/SequenceAction";
+import {Action} from "../src/app/modules/core/Action";
 
 describe('Actions tests', () => {
 
+    it('Base', async () => new Action().run());
+
     it('Sound', async () => new SoundAction("1").run());
 
-    it('Wait action', async () => new WaitAction(2).run());
+    it('Wait', async () => new WaitAction(2).run());
 
     it('Sequence', async () => {
         let wait05 = new WaitAction(0.5);
